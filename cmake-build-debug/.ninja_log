@@ -1,0 +1,5 @@
+# ninja log v5
+12	8664	7531664987455573	CMakeFiles/SS_tree.dir/SSTree.cpp.obj	dad3fffb1d9a8515
+7	8771	7531664988501499	CMakeFiles/SS_tree.dir/Point.cpp.obj	8ac887cd93dcddf7
+0	8792	7531664988705192	CMakeFiles/SS_tree.dir/main.cpp.obj	89c615f696331bdd
+8792	9781	7531664998504456	SS_tree.exe	831b7347f83c07e3
