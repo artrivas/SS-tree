@@ -23,7 +23,7 @@ SSNode* SSNode::findClosestChild(const Point& target) {
     float minDist = INF;
     SSNode* result = nullptr;
     for(const auto& childNode : children) {
-        if(childNode != nullptr && Point::distance(childNode->centroid,target) < minDist) {
+        if(childNode && Point::distance(childNode->centroid,target) < minDist) {
             minDist = Point::distance(childNode->centroid, target);
             result = childNode;
         }
@@ -47,10 +47,10 @@ float SSNode::getMean(const std::vector<Point> &centroids, const size_t &dimensi
 
 float SSNode::getMean(const std::vector<float> &values) {
     float mean = 0;
-    for(size_t j = 0; j < values.size(); j++) {
-        mean += values[j];
+    for(const float value : values) {
+        mean += value;
     }
-    mean/=values.size();
+    mean/=static_cast<float>(values.size());
     return mean;
 }
 
@@ -74,22 +74,20 @@ void SSNode::updateBoundingEnvelope() {
 
 
 float SSNode::getVariance(const std::vector<float> &values) {
-    float mean = getMean(values);
+    const float mean = getMean(values);
     float variance = 0;
-    for(size_t j = 0; j < values.size(); j++) {
-        variance+=(values[j] - mean)*(values[j]-mean);
-    }
-    variance/=values.size();
+    for(const float value : values)
+        variance+=(value - mean)*(value-mean);
+    variance/=static_cast<float>(values.size());
     return variance;
 }
 
 float SSNode::varianceAlongDirection(const std::vector<Point> &centroids, const size_t &dimension) {
-    float mean = getMean(centroids, dimension);
+    const float mean = getMean(centroids, dimension);
     float variance = 0;
-    for(size_t j = 0; j < centroids.size(); j++) {
-        variance+=(centroids[j][dimension] - mean)*(centroids[j][dimension]-mean);
-    }
-    variance/=centroids.size();
+    for(const auto & centroid : centroids)
+        variance+=(centroid[dimension] - mean)*(centroid[dimension]-mean);
+    variance/=static_cast<float>(centroids.size());
     return variance;
 }
 
@@ -117,27 +115,27 @@ size_t SSNode::directionOfMaxVariance() {
  * Implementación similar a R-tree.
  * @return SSNode*: Puntero al nuevo nodo creado por la división.
  */
-SSNode* SSNode::split() {
-    auto splitIndex = findSplitIndex(directionOfMaxVariance());
-    SSNode* newNode = nullptr;
+std::pair<SSNode*, SSNode*> SSNode::split() {
+    const size_t splitIndex = findSplitIndex(directionOfMaxVariance());
+    auto* newNode1 = new SSNode(centroid, maxPointsPerNode, radius, isLeaf, this);
+    auto* newNode2 = new SSNode(centroid, maxPointsPerNode, radius, isLeaf, this);
+
     if (isLeaf) {
-        newNode = new SSNode(centroid, maxPointsPerNode, radius, true, this);
-        newNode->_data = std::vector<Data*>(this->_data.begin()+splitIndex,this->_data.end());
-        std::erase_if(this->_data,
-                      [splitIndex, i = 0](const Data* d) mutable {
-                          return i++ >= splitIndex;
-                      });
+        newNode1->_data = std::vector<Data*>(_data.begin(), _data.begin() + splitIndex);;
+        newNode2->_data = std::vector<Data*>(_data.begin() + splitIndex, _data.end());;
     } else {
-        newNode = new SSNode(centroid, maxPointsPerNode, radius, false, this);
-        newNode->children = std::vector<SSNode*>(this->children.begin()+splitIndex,this->children.end());
-        std::erase_if(this->_data,
-                      [splitIndex, i = 0](const Data* d) mutable {
-                          return i++ >= splitIndex;
-                      });
+        newNode1->children = std::vector<SSNode*>(children.begin(), children.begin() + splitIndex);;
+        newNode2->children = std::vector<SSNode*>(children.begin() + splitIndex, children.end());;
     }
+
+    newNode1->updateBoundingEnvelope();
+    newNode2->updateBoundingEnvelope();
+
+
     this->updateBoundingEnvelope();
-    newNode->updateBoundingEnvelope();
-    return newNode;
+    this->isLeaf = false;
+
+    return {newNode1, newNode2};
 }
 
 
@@ -149,18 +147,17 @@ SSNode* SSNode::split() {
  */
 size_t SSNode::findSplitIndex(size_t coordinateIndex) {
     if(this->isLeaf) {
-        std::sort(this->_data.begin(),this->_data.end(),[coordinateIndex](const Data* a, const Data* b)  {
+        std::ranges::sort(this->_data,[coordinateIndex](const Data* a, const Data* b)  {
             return a->getEmbedding()[coordinateIndex] < b->getEmbedding()[coordinateIndex];
         });
     }else {
-        std::sort(this->children.begin(),this->children.end(),[coordinateIndex](const SSNode* a, const SSNode* b)  {
+        std::ranges::sort(this->children,[coordinateIndex](const SSNode* a, const SSNode* b)  {
             return a->getCentroid()[coordinateIndex] < b->getCentroid()[coordinateIndex];
         });
     }
     std::vector<float> points;
-    for(auto point : this->getEntriesCentroids()) {
+    for(auto point : this->getEntriesCentroids())
         points.push_back(point[coordinateIndex]);
-    }
     return minVarianceSplit(points);
 }
 
@@ -170,7 +167,7 @@ size_t SSNode::findSplitIndex(size_t coordinateIndex) {
  * Estos centroides pueden ser puntos almacenados en las hojas o los centroides de los nodos hijos en los nodos internos.
  * @return std::vector<Point>: Vector de centroides de las entradas.
  */
-std::vector<Point> SSNode::getEntriesCentroids() {
+std::vector<Point> SSNode::getEntriesCentroids() const {
     std::vector<Point> points;
     if(this->isLeaf) {
         for(const auto& i : this->_data) {
@@ -195,13 +192,13 @@ std::vector<Point> SSNode::getEntriesCentroids() {
  */
 size_t SSNode::minVarianceSplit(const std::vector<float>& values) {
     float minVariance = INF;
-    size_t m = 2; //Checkear
+    const size_t m = this->maxPointsPerNode/2; //Checkear
     size_t splitIndex = m; //No encontre el minimo
     for(size_t i = m; i < values.size()-m; ++i) {
         std::vector<float> v1(values.begin(),values.begin()+i-1);
         std::vector<float> v2(values.begin()+i,values.end());
-        float variance1 = getVariance(v1), variance2 = getVariance(v2);
-        if(variance1+variance2< minVariance) {
+        const float variance2 = getVariance(v2);
+        if(const float variance1 = getVariance(v1); variance1+variance2< minVariance) {
             minVariance = variance1+variance2;
             splitIndex = i;
         }
@@ -217,9 +214,7 @@ size_t SSNode::minVarianceSplit(const std::vector<float>& values) {
  * @return SSNode*: Nodo hoja adecuado para la inserción.
  */
 SSNode* SSNode::searchParentLeaf(SSNode* node, const Point& target) {
-    if(node->isLeaf)
-        return node;
-    return searchParentLeaf(node->findClosestChild(target), target);
+    return (node->isLeaf ? node: searchParentLeaf(node->findClosestChild(target),target));
 }
 
 /**
@@ -229,45 +224,37 @@ SSNode* SSNode::searchParentLeaf(SSNode* node, const Point& target) {
  * @param _data: Dato a insertar.
  * @return SSNode*: Nuevo nodo raíz si se dividió, de lo contrario nullptr.
  */
-SSNode* SSNode::insert(SSNode* node, Data* data) {
+std::pair<SSNode*, SSNode*> SSNode::insert(SSNode*& node, Data* data) {
     if (node->isLeaf) {
-        for(const auto point: node->getData()) {
+        for(const auto point : node->_data) {
             if(point == data) {
-                return nullptr;
+                return {nullptr,nullptr};
             }
         }
         node->_data.push_back(data);
         node->updateBoundingEnvelope();
+
         if (node->_data.size() <= node->maxPointsPerNode) {
-            return nullptr;
+            return {nullptr, nullptr};
         }
     } else {
         SSNode* closestChild = node->findClosestChild(data->getEmbedding());
-        auto newChild = node->insert(closestChild,data);
-        if (!newChild) {
+        auto [newChild1, newChild2] = insert(closestChild,data);
+        if (newChild1 == nullptr) {
             node->updateBoundingEnvelope();
-            return nullptr;
+            return {nullptr, nullptr};
         }
-        //
-        auto temp = new SSNode(node->getCentroid(),maxPointsPerNode); // creo un nuevo nodo;
-        temp->insertNode(node);
-        temp->insertNode(newChild);
-        node = temp;
-        node->isLeaf = false;
-        //
+
+        std::erase(node->children, closestChild);
+        node->children.push_back(newChild1);
+        node->children.push_back(newChild2);
         node->updateBoundingEnvelope();
+
         if (node->children.size() <= node->maxPointsPerNode) {
-            return nullptr;
+            return {nullptr, nullptr};
         }
     }
-    auto newChild = node->split();
-    auto temp = new SSNode(node->getCentroid(),maxPointsPerNode);
-    temp->insertNode(node);
-    temp->insertNode(newChild);
-    node = temp;
-    node->isLeaf = false;
-    node->updateBoundingEnvelope();
-    return newChild;
+    return node->split();
 }
 
 /**
@@ -306,23 +293,16 @@ void SSNode::insertNode(SSNode * node) {
  * Inserta un dato en el árbol.
  * @param _data: Dato a insertar.
  */
-//int a = 0;
-void SSTree::insert(Data* data) {
-  //  ++a;
-    if (!root) {
-        root = new SSNode(data->getEmbedding(), maxPointsPerNode);
-    }
+void SSTree::insert(Data* _data) {
+    if (!root)
+        root = new SSNode(_data->getEmbedding(), maxPointsPerNode);
 
-    auto newChild = root->insert(root,data);
-    //std::cout << a << ' ' << maxPointsPerNode<< '\n';
+    if (auto [newChild1, newChild2] = root->insert(root,_data); newChild1) {
+        root = new SSNode(_data->getEmbedding(), maxPointsPerNode);
 
-    if (newChild) {
-        auto temp = new SSNode(data->getEmbedding(),maxPointsPerNode); // creo un nuevo nodo;
-        temp->insertNode(root);
-        temp->insertNode(newChild);
-        root = temp;
+        root->insertNode(newChild1);
+        root->insertNode(newChild2);
         root->isLeaf = false;
-        root->updateBoundingEnvelope();
     }
 }
 

@@ -9,11 +9,11 @@
 #include "Data.h"
 
 class SSNode {
-public:
+
     size_t maxPointsPerNode;
     Point centroid;
     float radius;
-    bool isLeaf;
+
     SSNode* parent;
     std::vector<SSNode*> children;
     std::vector<Data*> _data;
@@ -24,12 +24,13 @@ public:
     // For insertion
     void updateBoundingEnvelope();
     size_t directionOfMaxVariance();
-    SSNode* split();
+    std::pair<SSNode*, SSNode*> split();
     size_t findSplitIndex(size_t coordinateIndex);
-    std::vector<Point> getEntriesCentroids();
+    [[nodiscard]] std::vector<Point> getEntriesCentroids() const;
     size_t minVarianceSplit(const std::vector<float>& values);
 
-
+public:
+    bool isLeaf;
     SSNode(const Point& centroid,size_t maxPointsPerNode, float radius=0.0f, bool isLeaf=true, SSNode* parent=nullptr)
         : centroid(centroid),maxPointsPerNode(maxPointsPerNode), radius(radius), isLeaf(isLeaf), parent(parent) {}
 
@@ -46,7 +47,7 @@ public:
 
     // Insertion
     SSNode* searchParentLeaf(SSNode* node, const Point& target);
-    SSNode*  insert(SSNode* node,Data* data);
+    std::pair<SSNode*, SSNode*> insert(SSNode*& node, Data* data);
 
     // Search
     SSNode* search(SSNode* node, Data* _data);
