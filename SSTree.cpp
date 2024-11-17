@@ -249,7 +249,7 @@ SSNode* SSNode::insert(SSNode* node, Data* data) {
             return nullptr;
         }
         //
-        auto temp = new SSNode(data->getEmbedding(),maxPointsPerNode); // creo un nuevo nodo;
+        auto temp = new SSNode(node->getCentroid(),maxPointsPerNode); // creo un nuevo nodo;
         temp->insertNode(node);
         temp->insertNode(newChild);
         node = temp;
@@ -260,7 +260,14 @@ SSNode* SSNode::insert(SSNode* node, Data* data) {
             return nullptr;
         }
     }
-    return node->split();
+    auto newChild = node->split();
+    auto temp = new SSNode(node->getCentroid(),maxPointsPerNode);
+    temp->insertNode(node);
+    temp->insertNode(newChild);
+    node = temp;
+    node->isLeaf = false;
+    node->updateBoundingEnvelope();
+    return newChild;
 }
 
 /**
@@ -299,12 +306,15 @@ void SSNode::insertNode(SSNode * node) {
  * Inserta un dato en el árbol.
  * @param _data: Dato a insertar.
  */
+//int a = 0;
 void SSTree::insert(Data* data) {
+  //  ++a;
     if (!root) {
         root = new SSNode(data->getEmbedding(), maxPointsPerNode);
     }
 
     auto newChild = root->insert(root,data);
+    //std::cout << a << ' ' << maxPointsPerNode<< '\n';
 
     if (newChild) {
         auto temp = new SSNode(data->getEmbedding(),maxPointsPerNode); // creo un nuevo nodo;

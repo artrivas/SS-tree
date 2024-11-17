@@ -165,6 +165,6 @@ int main() {
     std::cout << "Hiper-esfera cubre todos los puntos de los nodos hoja: " << (spherePoints ? "Sí" : "No") << std::endl;
     std::cout << "Hiper-esfera cubre todas las hiper-esferas internas de los nodos internos: " << (sphereChildren ? "Sí" : "No") << std::endl;
     std::cout << "Happy ending! :D" << std::endl;
-
+    
     return 0;
 }
