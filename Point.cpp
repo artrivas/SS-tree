@@ -50,6 +50,10 @@ Point& Point::operator/=(float scalar) {
     return *this;
 }
 
+float Point::distance(const Point& a, const Point& b) {
+    return (a - b).norm();
+}
+
 // Punto aleatorio
 Point Point::random(float min, float max) {
     static std::random_device rd;

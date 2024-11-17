@@ -143,12 +143,12 @@ int main() {
     auto data = generateRandomData(NUM_POINTS);
     SSTree tree(MAX_POINTS_PER_NODE);
 
-    int c = 100;
+    //int c = 100;
     for (const auto& d : data) {
         tree.insert(d);
-        --c;
-        if(!c)
-            break;
+      //  --c;
+        //if(!c)
+          //  break;
     }
 
     // Realizar pruebas

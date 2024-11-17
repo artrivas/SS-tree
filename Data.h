@@ -4,7 +4,6 @@
 #include <string>
 #include "Point.h"
 
-
 class Data {
 private:
     Point embedding;

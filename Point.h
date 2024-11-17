@@ -6,7 +6,7 @@
 #include <random>
 #include <iostream>
 
-constexpr std::size_t DIM = 768;
+constexpr std::size_t DIM = 2; // 768
 constexpr float EPSILON = 1e-8f;
 
 class Point {
@@ -28,8 +28,10 @@ public:
     // Métodos adicionales
     float norm() const { return coordinates_.norm(); }
     float normSquared() const { return coordinates_.squaredNorm(); }
-    float distance(const Point& other) const { return (*this - other).norm(); }
-    static float distance(const Point& centroid,  const Point& other)  { return (other - centroid).norm(); } //Added
+
+    static float distance(const Point& a, const Point& b);
+
+    // float distance(const Point& other) const { return (*this - other).norm(); }
     float distanceSquared(const Point& other) const { return (*this - other).normSquared(); }
 
     // Operadores de acceso
@@ -42,7 +44,7 @@ public:
     // Print!
     void print() const;
 
-private:
+    // private:
     Eigen::VectorXf coordinates_;
 };
 

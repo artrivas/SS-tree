@@ -118,18 +118,17 @@ size_t SSNode::directionOfMaxVariance() {
  * @return SSNode*: Puntero al nuevo nodo creado por la división.
  */
 SSNode* SSNode::split() {
-    auto splitIndex = this->findSplitIndex(this->directionOfMaxVariance());
-
-    const auto newNode = new SSNode(this->centroid, this->radius, this->isLeaf,this->parent);
-
-    if(this->isLeaf) {
+    auto splitIndex = findSplitIndex(directionOfMaxVariance());
+    SSNode* newNode = nullptr;
+    if (isLeaf) {
+        newNode = new SSNode(centroid, maxPointsPerNode, radius, true, this);
         newNode->_data = std::vector<Data*>(this->_data.begin()+splitIndex,this->_data.end());
         std::erase_if(this->_data,
                       [splitIndex, i = 0](const Data* d) mutable {
                           return i++ >= splitIndex;
                       });
-
-    }else {
+    } else {
+        newNode = new SSNode(centroid, maxPointsPerNode, radius, false, this);
         newNode->children = std::vector<SSNode*>(this->children.begin()+splitIndex,this->children.end());
         std::erase_if(this->_data,
                       [splitIndex, i = 0](const Data* d) mutable {
@@ -140,6 +139,7 @@ SSNode* SSNode::split() {
     newNode->updateBoundingEnvelope();
     return newNode;
 }
+
 
 /**
  * findSplitIndex
@@ -229,34 +229,39 @@ SSNode* SSNode::searchParentLeaf(SSNode* node, const Point& target) {
  * @param _data: Dato a insertar.
  * @return SSNode*: Nuevo nodo raíz si se dividió, de lo contrario nullptr.
  */
-SSNode* SSNode::insert(SSNode* node, Data* _data) {
-    if(node->isLeaf) {
+SSNode* SSNode::insert(SSNode* node, Data* data) {
+    if (node->isLeaf) {
         for(const auto point: node->getData()) {
-            if(point == _data) {
+            if(point == data) {
                 return nullptr;
             }
         }
-        node->_data.emplace_back(_data);
+        node->_data.push_back(data);
         node->updateBoundingEnvelope();
-        if(node->_data.size() < node->maxPointsPerNode) {
+        if (node->_data.size() <= node->maxPointsPerNode) {
             return nullptr;
         }
-    }else {
-        const auto closestChild = node->findClosestChild(_data->getEmbedding());
-        auto newChild = node->insert(closestChild, _data);
-        if(!newChild) { //Significa que no hubo necesidad de dividir el nodo
+    } else {
+        SSNode* closestChild = node->findClosestChild(data->getEmbedding());
+        auto newChild = node->insert(closestChild,data);
+        if (!newChild) {
             node->updateBoundingEnvelope();
             return nullptr;
         }
-        node->children.emplace_back(newChild); // Dada a reutilizamos el closeschild, no hay necesidad de eliminarlo, entonces solo appedeamos el nuevo hijo
+        //
+        auto temp = new SSNode(data->getEmbedding(),maxPointsPerNode); // creo un nuevo nodo;
+        temp->insertNode(node);
+        temp->insertNode(newChild);
+        node = temp;
+        node->isLeaf = false;
+        //
         node->updateBoundingEnvelope();
-        if(node->children.size() <= node->maxPointsPerNode) {
+        if (node->children.size() <= node->maxPointsPerNode) {
             return nullptr;
         }
     }
     return node->split();
 }
-
 
 /**
  * search
@@ -294,20 +299,22 @@ void SSNode::insertNode(SSNode * node) {
  * Inserta un dato en el árbol.
  * @param _data: Dato a insertar.
  */
-void SSTree::insert(Data* _data) {
-    if(root == nullptr) {
-        root = new SSNode(_data->getEmbedding(),0,true,nullptr);
-        return;
+void SSTree::insert(Data* data) {
+    if (!root) {
+        root = new SSNode(data->getEmbedding(), maxPointsPerNode);
     }
-    auto newChild = this->root->insert(this->root, _data);
-    if(newChild != nullptr) {
-        auto temp = new SSNode(this->root->getCentroid(),root->getRadius(),false,nullptr); // creo un nuevo nodo;
+
+    auto newChild = root->insert(root,data);
+
+    if (newChild) {
+        auto temp = new SSNode(data->getEmbedding(),maxPointsPerNode); // creo un nuevo nodo;
         temp->insertNode(root);
         temp->insertNode(newChild);
-        this->root = temp;
+        root = temp;
+        root->isLeaf = false;
+        root->updateBoundingEnvelope();
     }
 }
-
 
 /**
  * search
