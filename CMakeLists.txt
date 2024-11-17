@@ -2,7 +2,7 @@ cmake_minimum_required(VERSION 3.26)
 project(SS_tree)
 
 
-include_directories("C:/Users/ccusc/Documents/Utec/Ciclo - 2024 I/eigen-3.4.0")
+include_directories("C:/Users/rivas/OneDrive/Documentos/EDA/Lab/eigen-3.4.0/eigen-3.4.0")
 
 set(CMAKE_CXX_STANDARD 20)
 

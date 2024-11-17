@@ -50,6 +50,15 @@ public:
 
     // Search
     SSNode* search(SSNode* node, Data* _data);
+
+    //Variance
+    float varianceAlongDirection(const std::vector<Point> & centroids, const size_t & dimension);
+    static float getMean(const std::vector<Point> &centroids, const size_t &dimension);
+    float getMean(const std::vector<float> &values);
+    float getVariance(const std::vector<float> &values);
+
+    //
+    void insertNode(SSNode * node);
 };
 
 class SSTree {

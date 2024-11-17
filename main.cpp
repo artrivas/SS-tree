@@ -142,11 +142,17 @@ bool sphereCoversAllChildrenSpheres(SSNode* root) {
 int main() {
     auto data = generateRandomData(NUM_POINTS);
     SSTree tree(MAX_POINTS_PER_NODE);
+
+    int c = 100;
     for (const auto& d : data) {
         tree.insert(d);
+        --c;
+        if(!c)
+            break;
     }
 
     // Realizar pruebas
+
     bool allPresent     = allDataPresent(tree, data);
     bool sameLevel      = leavesAtSameLevel(tree.getRoot());
     bool noExceed       = noNodeExceedsMaxChildren(tree.getRoot(), MAX_POINTS_PER_NODE);

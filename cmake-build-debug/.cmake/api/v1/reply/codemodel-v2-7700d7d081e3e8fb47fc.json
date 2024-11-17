@@ -39,7 +39,7 @@
 				{
 					"directoryIndex" : 0,
 					"id" : "SS_tree::@6890427a1f51a3e7e1df",
-					"jsonFile" : "target-SS_tree-Debug-f258a330b1787ea5b159.json",
+					"jsonFile" : "target-SS_tree-Debug-6095be11b8e35480d124.json",
 					"name" : "SS_tree",
 					"projectIndex" : 0
 				}
@@ -49,12 +49,12 @@
 	"kind" : "codemodel",
 	"paths" : 
 	{
-		"build" : "C:/Users/ccusc/Documents/Utec/Ciclo - 2024 I/SS-tree/cmake-build-debug",
-		"source" : "C:/Users/ccusc/Documents/Utec/Ciclo - 2024 I/SS-tree"
+		"build" : "C:/Users/rivas/OneDrive/Documentos/EDA/Lab/SS-tree/cmake-build-debug",
+		"source" : "C:/Users/rivas/OneDrive/Documentos/EDA/Lab/SS-tree"
 	},
 	"version" : 
 	{
 		"major" : 2,
-		"minor" : 5
+		"minor" : 7
 	}
 }
