@@ -22,7 +22,6 @@ class SSNode {
     SSNode* findClosestChild(const Point& target);
 
     // For insertion
-    void updateBoundingEnvelope();
     size_t directionOfMaxVariance();
     std::pair<SSNode*, SSNode*> split();
     size_t findSplitIndex(size_t coordinateIndex);
@@ -37,6 +36,8 @@ public:
     // Checks if a point is inside the bounding sphere
     bool intersectsPoint(const Point& point) const;
 
+    void updateBoundingEnvelope();
+
     // Getters
     const Point& getCentroid() const { return centroid; }
     float getRadius() const { return radius; }
@@ -48,6 +49,7 @@ public:
     // Insertion
     SSNode* searchParentLeaf(SSNode* node, const Point& target);
     std::pair<SSNode*, SSNode*> insert(SSNode*& node, Data* data);
+    void setParent(SSNode* _parent){parent = _parent;}
 
     // Search
     SSNode* search(SSNode* node, Data* _data);

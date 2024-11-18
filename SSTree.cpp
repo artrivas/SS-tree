@@ -117,8 +117,8 @@ size_t SSNode::directionOfMaxVariance() {
  */
 std::pair<SSNode*, SSNode*> SSNode::split() {
     const size_t splitIndex = findSplitIndex(directionOfMaxVariance());
-    auto* newNode1 = new SSNode(centroid, maxPointsPerNode, radius, isLeaf, this);
-    auto* newNode2 = new SSNode(centroid, maxPointsPerNode, radius, isLeaf, this);
+    auto* newNode1 = new SSNode(centroid, maxPointsPerNode, radius, isLeaf, this->parent);
+    auto* newNode2 = new SSNode(centroid, maxPointsPerNode, radius, isLeaf, this->parent);
 
     if (isLeaf) {
         newNode1->_data = std::vector<Data*>(_data.begin(), _data.begin() + splitIndex);;
@@ -304,6 +304,8 @@ void SSTree::insert(Data* _data) {
         root->insertNode(newChild2);
         root->isLeaf = false;
         root->updateBoundingEnvelope();
+        newChild1->setParent(root);
+        newChild2->setParent(root);
     }
 }
 
