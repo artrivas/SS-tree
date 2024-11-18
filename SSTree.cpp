@@ -303,6 +303,7 @@ void SSTree::insert(Data* _data) {
         root->insertNode(newChild1);
         root->insertNode(newChild2);
         root->isLeaf = false;
+        root->updateBoundingEnvelope();
     }
 }
 
