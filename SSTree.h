@@ -7,13 +7,14 @@
 #include <numeric>
 #include "Point.h"
 #include "Data.h"
+#include <queue>
+#include "utils.h"
 
 class SSNode {
-
     size_t maxPointsPerNode;
     Point centroid;
     float radius;
-
+    float rmin;
     SSNode* parent;
     std::vector<SSNode*> children;
     std::vector<Data*> _data;
@@ -31,7 +32,9 @@ class SSNode {
 public:
     bool isLeaf;
     SSNode(const Point& centroid,size_t maxPointsPerNode, float radius=0.0f, bool isLeaf=true, SSNode* parent=nullptr)
-        : centroid(centroid),maxPointsPerNode(maxPointsPerNode), radius(radius), isLeaf(isLeaf), parent(parent) {}
+        : centroid(centroid),maxPointsPerNode(maxPointsPerNode), radius(radius), isLeaf(isLeaf), parent(parent) {
+        rmin = std::numeric_limits<float>::max();
+    }
 
     // Checks if a point is inside the bounding sphere
     bool intersectsPoint(const Point& point) const;
@@ -52,7 +55,7 @@ public:
     void setParent(SSNode* _parent){parent = _parent;}
 
     // Search
-    SSNode* search(SSNode* node, Data* _data);
+    SSNode *search(SSNode *node, Data *_data);
 
     //Variance
     float varianceAlongDirection(const std::vector<Point> & centroids, const size_t & dimension);
@@ -62,6 +65,7 @@ public:
 
     //
     void insertNode(SSNode * node);
+    void knn(const Point& q, const size_t& k, std::priority_queue<Data*, std::vector<Data*>, QueryComparator>& L, float& Dk);
 };
 
 class SSTree {
@@ -74,9 +78,10 @@ public:
         : maxPointsPerNode(maxPointsPerNode), root(nullptr) {}
 
     void insert(Data* _data);
-    SSNode* search(Data* _data);
+    SSNode* search(Data* _data) const;
 
     SSNode * getRoot() const;
+    std::vector<Data*> knn(const Point & query, const size_t & k) const;
 };
 
 #endif // SSTREE_H

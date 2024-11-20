@@ -1,4 +1,4 @@
 "C:\Program Files\JetBrains\CLion 2024.2.3\bin\cmake\win\x64\bin\cmake.exe" -DCMAKE_BUILD_TYPE=Debug -G "MinGW Makefiles" -S C:\Users\rivas\OneDrive\Documentos\EDA\Lab\SS-tree -B C:\Users\rivas\OneDrive\Documentos\EDA\Lab\SS-tree\cmake-build-debug
--- Configuring done (0.3s)
--- Generating done (0.2s)
+-- Configuring done (0.2s)
+-- Generating done (0.1s)
 -- Build files have been written to: C:/Users/rivas/OneDrive/Documentos/EDA/Lab/SS-tree/cmake-build-debug

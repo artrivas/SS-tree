@@ -7,4 +7,6 @@ include_directories("C:/Users/rivas/OneDrive/Documentos/EDA/Lab/eigen-3.4.0/eige
 set(CMAKE_CXX_STANDARD 20)
 
 add_executable(SS_tree main.cpp
-        Point.h Point.cpp Data.h SSTree.cpp SSTree.h)
+        Point.h Point.cpp Data.h SSTree.cpp SSTree.h
+        utils.h
+)

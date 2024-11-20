@@ -430,6 +430,7 @@ CMakeFiles/SS_tree.dir/SSTree.cpp.obj: C:/Users/rivas/OneDrive/Documentos/EDA/La
   C:/Program\ Files/JetBrains/CLion\ 2024.2.3/bin/mingw/lib/gcc/x86_64-w64-mingw32/13.1.0/include/c++/bits/cpp_type_traits.h \
   C:/Program\ Files/JetBrains/CLion\ 2024.2.3/bin/mingw/lib/gcc/x86_64-w64-mingw32/13.1.0/include/c++/bits/cxxabi_forced.h \
   C:/Program\ Files/JetBrains/CLion\ 2024.2.3/bin/mingw/lib/gcc/x86_64-w64-mingw32/13.1.0/include/c++/bits/cxxabi_init_exception.h \
+  C:/Program\ Files/JetBrains/CLion\ 2024.2.3/bin/mingw/lib/gcc/x86_64-w64-mingw32/13.1.0/include/c++/bits/deque.tcc \
   C:/Program\ Files/JetBrains/CLion\ 2024.2.3/bin/mingw/lib/gcc/x86_64-w64-mingw32/13.1.0/include/c++/bits/enable_special_members.h \
   C:/Program\ Files/JetBrains/CLion\ 2024.2.3/bin/mingw/lib/gcc/x86_64-w64-mingw32/13.1.0/include/c++/bits/erase_if.h \
   C:/Program\ Files/JetBrains/CLion\ 2024.2.3/bin/mingw/lib/gcc/x86_64-w64-mingw32/13.1.0/include/c++/bits/exception.h \
@@ -480,6 +481,7 @@ CMakeFiles/SS_tree.dir/SSTree.cpp.obj: C:/Users/rivas/OneDrive/Documentos/EDA/La
   C:/Program\ Files/JetBrains/CLion\ 2024.2.3/bin/mingw/lib/gcc/x86_64-w64-mingw32/13.1.0/include/c++/bits/stl_algobase.h \
   C:/Program\ Files/JetBrains/CLion\ 2024.2.3/bin/mingw/lib/gcc/x86_64-w64-mingw32/13.1.0/include/c++/bits/stl_bvector.h \
   C:/Program\ Files/JetBrains/CLion\ 2024.2.3/bin/mingw/lib/gcc/x86_64-w64-mingw32/13.1.0/include/c++/bits/stl_construct.h \
+  C:/Program\ Files/JetBrains/CLion\ 2024.2.3/bin/mingw/lib/gcc/x86_64-w64-mingw32/13.1.0/include/c++/bits/stl_deque.h \
   C:/Program\ Files/JetBrains/CLion\ 2024.2.3/bin/mingw/lib/gcc/x86_64-w64-mingw32/13.1.0/include/c++/bits/stl_function.h \
   C:/Program\ Files/JetBrains/CLion\ 2024.2.3/bin/mingw/lib/gcc/x86_64-w64-mingw32/13.1.0/include/c++/bits/stl_heap.h \
   C:/Program\ Files/JetBrains/CLion\ 2024.2.3/bin/mingw/lib/gcc/x86_64-w64-mingw32/13.1.0/include/c++/bits/stl_iterator.h \
@@ -487,6 +489,7 @@ CMakeFiles/SS_tree.dir/SSTree.cpp.obj: C:/Users/rivas/OneDrive/Documentos/EDA/La
   C:/Program\ Files/JetBrains/CLion\ 2024.2.3/bin/mingw/lib/gcc/x86_64-w64-mingw32/13.1.0/include/c++/bits/stl_iterator_base_types.h \
   C:/Program\ Files/JetBrains/CLion\ 2024.2.3/bin/mingw/lib/gcc/x86_64-w64-mingw32/13.1.0/include/c++/bits/stl_numeric.h \
   C:/Program\ Files/JetBrains/CLion\ 2024.2.3/bin/mingw/lib/gcc/x86_64-w64-mingw32/13.1.0/include/c++/bits/stl_pair.h \
+  C:/Program\ Files/JetBrains/CLion\ 2024.2.3/bin/mingw/lib/gcc/x86_64-w64-mingw32/13.1.0/include/c++/bits/stl_queue.h \
   C:/Program\ Files/JetBrains/CLion\ 2024.2.3/bin/mingw/lib/gcc/x86_64-w64-mingw32/13.1.0/include/c++/bits/stl_tempbuf.h \
   C:/Program\ Files/JetBrains/CLion\ 2024.2.3/bin/mingw/lib/gcc/x86_64-w64-mingw32/13.1.0/include/c++/bits/stl_uninitialized.h \
   C:/Program\ Files/JetBrains/CLion\ 2024.2.3/bin/mingw/lib/gcc/x86_64-w64-mingw32/13.1.0/include/c++/bits/stl_vector.h \
@@ -518,6 +521,7 @@ CMakeFiles/SS_tree.dir/SSTree.cpp.obj: C:/Users/rivas/OneDrive/Documentos/EDA/La
   C:/Program\ Files/JetBrains/CLion\ 2024.2.3/bin/mingw/lib/gcc/x86_64-w64-mingw32/13.1.0/include/c++/cwctype \
   C:/Program\ Files/JetBrains/CLion\ 2024.2.3/bin/mingw/lib/gcc/x86_64-w64-mingw32/13.1.0/include/c++/debug/assertions.h \
   C:/Program\ Files/JetBrains/CLion\ 2024.2.3/bin/mingw/lib/gcc/x86_64-w64-mingw32/13.1.0/include/c++/debug/debug.h \
+  C:/Program\ Files/JetBrains/CLion\ 2024.2.3/bin/mingw/lib/gcc/x86_64-w64-mingw32/13.1.0/include/c++/deque \
   C:/Program\ Files/JetBrains/CLion\ 2024.2.3/bin/mingw/lib/gcc/x86_64-w64-mingw32/13.1.0/include/c++/exception \
   C:/Program\ Files/JetBrains/CLion\ 2024.2.3/bin/mingw/lib/gcc/x86_64-w64-mingw32/13.1.0/include/c++/ext/aligned_buffer.h \
   C:/Program\ Files/JetBrains/CLion\ 2024.2.3/bin/mingw/lib/gcc/x86_64-w64-mingw32/13.1.0/include/c++/ext/alloc_traits.h \
@@ -540,6 +544,7 @@ CMakeFiles/SS_tree.dir/SSTree.cpp.obj: C:/Users/rivas/OneDrive/Documentos/EDA/La
   C:/Program\ Files/JetBrains/CLion\ 2024.2.3/bin/mingw/lib/gcc/x86_64-w64-mingw32/13.1.0/include/c++/pstl/glue_algorithm_defs.h \
   C:/Program\ Files/JetBrains/CLion\ 2024.2.3/bin/mingw/lib/gcc/x86_64-w64-mingw32/13.1.0/include/c++/pstl/glue_numeric_defs.h \
   C:/Program\ Files/JetBrains/CLion\ 2024.2.3/bin/mingw/lib/gcc/x86_64-w64-mingw32/13.1.0/include/c++/pstl/pstl_config.h \
+  C:/Program\ Files/JetBrains/CLion\ 2024.2.3/bin/mingw/lib/gcc/x86_64-w64-mingw32/13.1.0/include/c++/queue \
   C:/Program\ Files/JetBrains/CLion\ 2024.2.3/bin/mingw/lib/gcc/x86_64-w64-mingw32/13.1.0/include/c++/random \
   C:/Program\ Files/JetBrains/CLion\ 2024.2.3/bin/mingw/lib/gcc/x86_64-w64-mingw32/13.1.0/include/c++/sstream \
   C:/Program\ Files/JetBrains/CLion\ 2024.2.3/bin/mingw/lib/gcc/x86_64-w64-mingw32/13.1.0/include/c++/stdexcept \
@@ -815,7 +820,8 @@ CMakeFiles/SS_tree.dir/SSTree.cpp.obj: C:/Users/rivas/OneDrive/Documentos/EDA/La
   C:/Users/rivas/OneDrive/Documentos/EDA/Lab/eigen-3.4.0/eigen-3.4.0/Eigen/src/plugins/ReshapedMethods.h \
   C:/Users/rivas/OneDrive/Documentos/EDA/Lab/SS-tree/Data.h \
   C:/Users/rivas/OneDrive/Documentos/EDA/Lab/SS-tree/Point.h \
-  C:/Users/rivas/OneDrive/Documentos/EDA/Lab/SS-tree/SSTree.h
+  C:/Users/rivas/OneDrive/Documentos/EDA/Lab/SS-tree/SSTree.h \
+  C:/Users/rivas/OneDrive/Documentos/EDA/Lab/SS-tree/utils.h
 
 CMakeFiles/SS_tree.dir/main.cpp.obj: C:/Users/rivas/OneDrive/Documentos/EDA/Lab/SS-tree/main.cpp \
   C:/Program\ Files/JetBrains/CLion\ 2024.2.3/bin/mingw/lib/gcc/x86_64-w64-mingw32/13.1.0/include/c++/algorithm \
@@ -839,6 +845,7 @@ CMakeFiles/SS_tree.dir/main.cpp.obj: C:/Users/rivas/OneDrive/Documentos/EDA/Lab/
   C:/Program\ Files/JetBrains/CLion\ 2024.2.3/bin/mingw/lib/gcc/x86_64-w64-mingw32/13.1.0/include/c++/bits/cpp_type_traits.h \
   C:/Program\ Files/JetBrains/CLion\ 2024.2.3/bin/mingw/lib/gcc/x86_64-w64-mingw32/13.1.0/include/c++/bits/cxxabi_forced.h \
   C:/Program\ Files/JetBrains/CLion\ 2024.2.3/bin/mingw/lib/gcc/x86_64-w64-mingw32/13.1.0/include/c++/bits/cxxabi_init_exception.h \
+  C:/Program\ Files/JetBrains/CLion\ 2024.2.3/bin/mingw/lib/gcc/x86_64-w64-mingw32/13.1.0/include/c++/bits/deque.tcc \
   C:/Program\ Files/JetBrains/CLion\ 2024.2.3/bin/mingw/lib/gcc/x86_64-w64-mingw32/13.1.0/include/c++/bits/enable_special_members.h \
   C:/Program\ Files/JetBrains/CLion\ 2024.2.3/bin/mingw/lib/gcc/x86_64-w64-mingw32/13.1.0/include/c++/bits/erase_if.h \
   C:/Program\ Files/JetBrains/CLion\ 2024.2.3/bin/mingw/lib/gcc/x86_64-w64-mingw32/13.1.0/include/c++/bits/exception.h \
@@ -889,6 +896,7 @@ CMakeFiles/SS_tree.dir/main.cpp.obj: C:/Users/rivas/OneDrive/Documentos/EDA/Lab/
   C:/Program\ Files/JetBrains/CLion\ 2024.2.3/bin/mingw/lib/gcc/x86_64-w64-mingw32/13.1.0/include/c++/bits/stl_algobase.h \
   C:/Program\ Files/JetBrains/CLion\ 2024.2.3/bin/mingw/lib/gcc/x86_64-w64-mingw32/13.1.0/include/c++/bits/stl_bvector.h \
   C:/Program\ Files/JetBrains/CLion\ 2024.2.3/bin/mingw/lib/gcc/x86_64-w64-mingw32/13.1.0/include/c++/bits/stl_construct.h \
+  C:/Program\ Files/JetBrains/CLion\ 2024.2.3/bin/mingw/lib/gcc/x86_64-w64-mingw32/13.1.0/include/c++/bits/stl_deque.h \
   C:/Program\ Files/JetBrains/CLion\ 2024.2.3/bin/mingw/lib/gcc/x86_64-w64-mingw32/13.1.0/include/c++/bits/stl_function.h \
   C:/Program\ Files/JetBrains/CLion\ 2024.2.3/bin/mingw/lib/gcc/x86_64-w64-mingw32/13.1.0/include/c++/bits/stl_heap.h \
   C:/Program\ Files/JetBrains/CLion\ 2024.2.3/bin/mingw/lib/gcc/x86_64-w64-mingw32/13.1.0/include/c++/bits/stl_iterator.h \
@@ -896,6 +904,7 @@ CMakeFiles/SS_tree.dir/main.cpp.obj: C:/Users/rivas/OneDrive/Documentos/EDA/Lab/
   C:/Program\ Files/JetBrains/CLion\ 2024.2.3/bin/mingw/lib/gcc/x86_64-w64-mingw32/13.1.0/include/c++/bits/stl_iterator_base_types.h \
   C:/Program\ Files/JetBrains/CLion\ 2024.2.3/bin/mingw/lib/gcc/x86_64-w64-mingw32/13.1.0/include/c++/bits/stl_numeric.h \
   C:/Program\ Files/JetBrains/CLion\ 2024.2.3/bin/mingw/lib/gcc/x86_64-w64-mingw32/13.1.0/include/c++/bits/stl_pair.h \
+  C:/Program\ Files/JetBrains/CLion\ 2024.2.3/bin/mingw/lib/gcc/x86_64-w64-mingw32/13.1.0/include/c++/bits/stl_queue.h \
   C:/Program\ Files/JetBrains/CLion\ 2024.2.3/bin/mingw/lib/gcc/x86_64-w64-mingw32/13.1.0/include/c++/bits/stl_tempbuf.h \
   C:/Program\ Files/JetBrains/CLion\ 2024.2.3/bin/mingw/lib/gcc/x86_64-w64-mingw32/13.1.0/include/c++/bits/stl_uninitialized.h \
   C:/Program\ Files/JetBrains/CLion\ 2024.2.3/bin/mingw/lib/gcc/x86_64-w64-mingw32/13.1.0/include/c++/bits/stl_vector.h \
@@ -928,6 +937,7 @@ CMakeFiles/SS_tree.dir/main.cpp.obj: C:/Users/rivas/OneDrive/Documentos/EDA/Lab/
   C:/Program\ Files/JetBrains/CLion\ 2024.2.3/bin/mingw/lib/gcc/x86_64-w64-mingw32/13.1.0/include/c++/cwctype \
   C:/Program\ Files/JetBrains/CLion\ 2024.2.3/bin/mingw/lib/gcc/x86_64-w64-mingw32/13.1.0/include/c++/debug/assertions.h \
   C:/Program\ Files/JetBrains/CLion\ 2024.2.3/bin/mingw/lib/gcc/x86_64-w64-mingw32/13.1.0/include/c++/debug/debug.h \
+  C:/Program\ Files/JetBrains/CLion\ 2024.2.3/bin/mingw/lib/gcc/x86_64-w64-mingw32/13.1.0/include/c++/deque \
   C:/Program\ Files/JetBrains/CLion\ 2024.2.3/bin/mingw/lib/gcc/x86_64-w64-mingw32/13.1.0/include/c++/exception \
   C:/Program\ Files/JetBrains/CLion\ 2024.2.3/bin/mingw/lib/gcc/x86_64-w64-mingw32/13.1.0/include/c++/ext/aligned_buffer.h \
   C:/Program\ Files/JetBrains/CLion\ 2024.2.3/bin/mingw/lib/gcc/x86_64-w64-mingw32/13.1.0/include/c++/ext/alloc_traits.h \
@@ -950,6 +960,7 @@ CMakeFiles/SS_tree.dir/main.cpp.obj: C:/Users/rivas/OneDrive/Documentos/EDA/Lab/
   C:/Program\ Files/JetBrains/CLion\ 2024.2.3/bin/mingw/lib/gcc/x86_64-w64-mingw32/13.1.0/include/c++/pstl/glue_algorithm_defs.h \
   C:/Program\ Files/JetBrains/CLion\ 2024.2.3/bin/mingw/lib/gcc/x86_64-w64-mingw32/13.1.0/include/c++/pstl/glue_numeric_defs.h \
   C:/Program\ Files/JetBrains/CLion\ 2024.2.3/bin/mingw/lib/gcc/x86_64-w64-mingw32/13.1.0/include/c++/pstl/pstl_config.h \
+  C:/Program\ Files/JetBrains/CLion\ 2024.2.3/bin/mingw/lib/gcc/x86_64-w64-mingw32/13.1.0/include/c++/queue \
   C:/Program\ Files/JetBrains/CLion\ 2024.2.3/bin/mingw/lib/gcc/x86_64-w64-mingw32/13.1.0/include/c++/random \
   C:/Program\ Files/JetBrains/CLion\ 2024.2.3/bin/mingw/lib/gcc/x86_64-w64-mingw32/13.1.0/include/c++/sstream \
   C:/Program\ Files/JetBrains/CLion\ 2024.2.3/bin/mingw/lib/gcc/x86_64-w64-mingw32/13.1.0/include/c++/stdexcept \
@@ -1226,7 +1237,8 @@ CMakeFiles/SS_tree.dir/main.cpp.obj: C:/Users/rivas/OneDrive/Documentos/EDA/Lab/
   C:/Users/rivas/OneDrive/Documentos/EDA/Lab/eigen-3.4.0/eigen-3.4.0/Eigen/src/plugins/ReshapedMethods.h \
   C:/Users/rivas/OneDrive/Documentos/EDA/Lab/SS-tree/Data.h \
   C:/Users/rivas/OneDrive/Documentos/EDA/Lab/SS-tree/Point.h \
-  C:/Users/rivas/OneDrive/Documentos/EDA/Lab/SS-tree/SSTree.h
+  C:/Users/rivas/OneDrive/Documentos/EDA/Lab/SS-tree/SSTree.h \
+  C:/Users/rivas/OneDrive/Documentos/EDA/Lab/SS-tree/utils.h
 
 
 C:/Program\ Files/JetBrains/CLion\ 2024.2.3/bin/mingw/x86_64-w64-mingw32/include/pthread.h:
@@ -1268,6 +1280,8 @@ C:/Program\ Files/JetBrains/CLion\ 2024.2.3/bin/mingw/lib/gcc/x86_64-w64-mingw32
 C:/Users/rivas/OneDrive/Documentos/EDA/Lab/eigen-3.4.0/eigen-3.4.0/Eigen/src/Geometry/Umeyama.h:
 
 C:/Program\ Files/JetBrains/CLion\ 2024.2.3/bin/mingw/lib/gcc/x86_64-w64-mingw32/13.1.0/include/c++/backward/binders.h:
+
+C:/Program\ Files/JetBrains/CLion\ 2024.2.3/bin/mingw/lib/gcc/x86_64-w64-mingw32/13.1.0/include/c++/bits/stl_deque.h:
 
 C:/Program\ Files/JetBrains/CLion\ 2024.2.3/bin/mingw/lib/gcc/x86_64-w64-mingw32/13.1.0/include/c++/bits/functional_hash.h:
 
@@ -1582,6 +1596,8 @@ C:/Users/rivas/OneDrive/Documentos/EDA/Lab/eigen-3.4.0/eigen-3.4.0/Eigen/src/Cor
 C:/Program\ Files/JetBrains/CLion\ 2024.2.3/bin/mingw/lib/gcc/x86_64-w64-mingw32/13.1.0/include/c++/functional:
 
 C:/Program\ Files/JetBrains/CLion\ 2024.2.3/bin/mingw/lib/gcc/x86_64-w64-mingw32/13.1.0/include/c++/iosfwd:
+
+C:/Program\ Files/JetBrains/CLion\ 2024.2.3/bin/mingw/lib/gcc/x86_64-w64-mingw32/13.1.0/include/c++/bits/stl_queue.h:
 
 C:/Users/rivas/OneDrive/Documentos/EDA/Lab/eigen-3.4.0/eigen-3.4.0/Eigen/src/Core/products/GeneralMatrixMatrix.h:
 
@@ -2046,6 +2062,14 @@ C:/Users/rivas/OneDrive/Documentos/EDA/Lab/eigen-3.4.0/eigen-3.4.0/Eigen/src/plu
 C:/Users/rivas/OneDrive/Documentos/EDA/Lab/eigen-3.4.0/eigen-3.4.0/Eigen/src/plugins/ReshapedMethods.h:
 
 C:/Users/rivas/OneDrive/Documentos/EDA/Lab/SS-tree/Point.h:
+
+C:/Program\ Files/JetBrains/CLion\ 2024.2.3/bin/mingw/lib/gcc/x86_64-w64-mingw32/13.1.0/include/c++/bits/deque.tcc:
+
+C:/Program\ Files/JetBrains/CLion\ 2024.2.3/bin/mingw/lib/gcc/x86_64-w64-mingw32/13.1.0/include/c++/deque:
+
+C:/Program\ Files/JetBrains/CLion\ 2024.2.3/bin/mingw/lib/gcc/x86_64-w64-mingw32/13.1.0/include/c++/queue:
+
+C:/Users/rivas/OneDrive/Documentos/EDA/Lab/SS-tree/utils.h:
 
 C:/Users/rivas/OneDrive/Documentos/EDA/Lab/SS-tree/main.cpp:
 
